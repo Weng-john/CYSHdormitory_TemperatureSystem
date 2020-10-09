@@ -6,21 +6,21 @@ function myFunction() {
   year-=1911;  month+=1;  date-=1;
   
   //取得表單回應資料
-  var Url = "https://docs.google.com/spreadsheets/d/1oa5uV75WdklQIUT5-D1NkJPMnRD5CcLlPs5O36oCeY0/";
-  var sheetName = "表單回應";
+  var Url = "表單網址";
+  var sheetName = "試算表名稱";
   var SpreadSheet = SpreadsheetApp.openByUrl(Url);
   var sheetRespond = SpreadSheet.getSheetByName(sheetName);
   var formRespond = sheetRespond.getRange( 2, 1).getValue();
   if(formRespond!=""){
     //刪除表單回應
     var Sheet = SpreadSheet.getSheetByName(sheetName);
-    var FormUrl = "https://docs.google.com/forms/d/18L0HvLtdSXMn8F4wlOISVVH_t0Rd3WzEboqWIXR3f6A/";
+    var FormUrl = "表單網址";
     var form = FormApp.openByUrl(FormUrl);
     form.deleteAllResponses();
     
     //重設人員比對資料
-    var url = ["https://docs.google.com/spreadsheets/d/1oa5uV75WdklQIUT5-D1NkJPMnRD5CcLlPs5O36oCeY0/","https://docs.google.com/spreadsheets/d/1yGZ0WKQPjX8hgWtLxWz51dr2eT3k2N_pLWKJ-e1jFL4/"];
-    var sheetname = ["人員比對","名單"];
+    var url = ["試算表網址","試算表網址"];
+    var sheetname = ["工作表名稱","工作表名稱"];
     for(var i=0;i<2;i++){
       var URL = url[i];
       var Spreadsheet = SpreadsheetApp.openByUrl(url[i]);
@@ -31,7 +31,7 @@ function myFunction() {
     }
     
     //重設請假名單
-    sheetname = "主頁";
+    sheetname = "工作表名稱";
     var Sheet = SpreadSheet.getSheetByName(sheetname);
     var LastRow = Sheet.getLastRow();
     Sheet.getRange(3, 9, LastRow, 1).setValue("");
